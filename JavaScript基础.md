@@ -468,4 +468,178 @@ console.log(today.getDay());
 例如：var year=today.getFullYear(),month=today.getMonth(),day=today.getDate();  
 var setT=new Date(year,month+30,day),这样设置30个月之后的日期  
 
+### DOM操作  
+1. 创建节点  
+	document.write()  
+	当document.write被写在body HTML之后时，写入的内容会覆盖之前已有的所有节点内容  
+	document.createElement(“tagName”)  
+	document.creatTextNode(“text”)  
+	document.creatDocumentFragment(“element”)创建文档片段  
+	  
+2. 遍历节点  
+3. 获取节点  
+4. 操作节点  
+
+### DOM事件  
+#### 获取元素方法  
+document.getElementById(“id”)：返回对拥有指定id的第一个对象的引用  
+document.getElementsByTagName(“”)：返回具有该标签的所有元素组成的数组  
+*document. getElementById(“id”).get ElementsByTagName(“”)  
+  
+#### innerHTML  
+语法：ele.innerHTML   *后面没有括号嗷  
+功能：返回ele元素开始和结束标签之间的HTML  
+语法：ele.innerHTML=“内容”  
+功能：设置ele元素开始和结束标签之间的HTML内容为“内容”  
+  
+#### className  
+ele.className;ele.className=(“类名称”)  
+获取、设置class值。如果元素之前就有class值，则该方式设置会覆盖之前的值  
+  
+#### ele.getAttribte  
+ele.getAttribute(“属性”)  
+获取ele元素属性  
+*ele是要操作的dom对象，属性是要获取的html属性  
+例如：  
+```
+<p id=“text” class=“text” align=“center” data-type=“title”>文本<p>  
+<script>  
+    var p=document.geElementById(“text”);  
+    console.log(p.id)  
+    console.log(p.align)  
+    console.log(p.className)  
+    consol.log(p.getAttribute(“data-type”))  
+</script>  
+```
+*标准属性（除class属性外）可以直接使用ele.atribute来获取属性值，当属性为自定义属性时，则需要使用getAttribute来获取  
+ele.setAttribute(“属性名称”,“值”)：设置属性  
+ele.removeAttribute(“属性名称”)：删除属性  
+  
+#### HTML事件  
+直接在HTML元素标签内添加事件，执行脚本  
+语法：<tag 事件=“执行脚本”></tag>  
+功能：在HTML元素上绑定事件  
+说明：执行脚本可以是一个函数的调用  
+例 ①：  
+`<input type=“button” onclick=“alert（‘我是按钮’）”>`  
+例 ②:  
+```
+<div id=“A”class=“A”onmouseover=“mouseoverF(this,#fff)”>开始</div>  
+样式：<style>.A{width:10px;height:10px;cursor:poninter;}</style>  
+脚本：<script>  
+function mouseoverF(A,bgcolor){A.style.backgroun=“bgcolor}  
+</script>  
+```  
+#### 鼠标事件  
+   
+DOM0级事件  
+1、通过DOM获取HTML元素  
+2、（获取HTML元素）. 事件=执行脚本  
+  
+onload  
+window.onload=function（）{   }  
+功能：页面加载完之后才会执行  
+  
+#### 键盘事件  
+   
+#### JavaScript BOM  
+BOM(browser object modle)浏览器对象模型  
+BOM对象有：window、navigator、screen、history、location、document、event  
+  
+#### window  
+1. window是浏览器的一个实例，在浏览器中，window对象具有双重角色，它是通过JS访问浏览器窗口的接口，也是ECMAScript规定的一个Global对象(全局对象)  
+2. 通过window可以声明一个全局变量，也可以声明一个全局方法  
+3. window对象方法  
+`window.alert(“提示内容”)`：显示带有一段消息和一个确认按钮的警告框  
+`window.confirm(“消息内容”)`：显示一个带有制定消息和确认及取消的对话框  
+返回值是布尔型，点击确定返回true，点击取消返回false  
+`window.prompt(“文本，默认文本”)`  
+*文本是要在对话框中显示的纯文本（不是html格式的文本）  
+*默认文本是默认的输入文本。  
+返回值：点击取消按钮返回null  
+加入换行：\n  *注意不是/n  
+eg: window.prompt("请\n输入点儿什么")  
+  
+#### window.open(“URL”,“name”,“parameters”)  
+打开一个新的窗口或查找一个已命名的窗口  
+URL：子窗口路径  
+name：子窗口句柄，声明了窗口名称，方便后期通过name对子窗口进行引用  
+parameter：窗口参数，参数之间用逗号分隔  
+   
+#### window.close()  
+*JavaScript是单线程语言，单线程就是所执行的代码必须按照顺序  
+  
+#### 超时调用  
+window.setTimeout(code,millisec)  
+功能：在指定的毫秒数后调用函数或计算表达式  
+code：要执行的函数或JS代码串  
+millisec：在执行代码前需要等待的毫秒数  
+window.clearTimeout(idofsettimeout)  
+功能：取消由setTimeout()方法设置的timeout  
+window.setInterval(code,millisec)  
+功能：每隔指定时间执行一次代码  
+  
+#### location  
+1、location对象包含有关当前URL的信息  
+2、location对象是window对象的一个部分，可通过window.location属性来访问  
+3、location对象属性  
+*URL(uniform resource locator)统一资源定位符；  
+*基本URL包含：模式（或称协议）、服务器名称（或IP地址）、路径和文件名，如“协议://授权/路径?查询”  
+*完整的、带有授权部分的普通统一资源标志符语法看上去如下：协议://用户名:密码@子域名.域名.顶级域名:端口号/目录/文件名.文件后缀?参数=值#标志  
+location.href  
+功能：设置或返回当前加载页面的完整URL  
+*location.href与window.location.href等价  
+location.hash、host、hostname、pathname、port、protocol、search  
+  
+#### Location 对象属性与方法  
+属性	描述  
+##### hash  
+设置或返回从井号 (#) 开始的 URL（锚）。  
+##### host  
+设置或返回主机名和当前 URL 的端口号。  
+##### hostname  
+设置或返回当前 URL 的主机名。  
+##### href  
+设置或返回完整的 URL。  
+##### pathname  
+设置或返回当前 URL 的路径部分。  
+##### port  
+设置或返回当前 URL 的端口号。  
+##### protocol  
+设置或返回当前 URL 的协议。  
+##### search  
+设置或返回从问号 (?) 开始的 URL（查询部分）。  
+  
+方法	描述  
+assign()  
+加载新的文档。  
+reload()  
+重新加载当前文档。  
+replace()  
+用新的文档替换当前文档。  
+*reload()在浏览器的缓存里重新加载。reload(true)从服务器重新加载  
+  
+#### history  
+1、History对象包含用户(在浏览器窗口中)访问过的URL  
+2、History对象是window对象的一部分，可通过window.history属性对其进行访问  
+*没有应用于 History 对象的公开标准，不过所有浏览器都支持该对象  
+* History对象最初设计来表示窗口的浏览历史,但出于隐私方面的原因不再允许脚本访问已经访问过的实际URL。唯一保持使用的功能只有back()、forward() 和 go()方法  
+3、对象属性  
+history.length: 返回浏览器历史列表中的URL数量  
+4、对象方法  
+back():加载history列表中的前一个URL  
+forward():加载history列表中的下一个URL  
+go()：加载history列表中的某个具体页面  
+例：history.go(-2)相当于执行两次后退操作  
+  
+#### screen  
+Screen 对象包含有关客户端显示屏幕的信息  
+   
+比较常用的  
+screen.availWidth、screen.availHeight 获取屏幕宽高  
+window.innerWidth、window.innerHeight 获取窗口宽高  
+  
+#### navigator  
+navigator.UserAgent用来识别浏览器名称、版本、引擎以及操作系统等信息的内容  
+
 
