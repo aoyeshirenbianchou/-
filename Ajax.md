@@ -1,14 +1,14 @@
 # Ajax  
 ### 1. 什么是Ajax  
-	asynchronous javascript and XML, 是几种技术的集合。  
+asynchronous javascript and XML, 是几种技术的集合。  
 ### 2. 为什么要使用Ajax  
-	* Ajax通过异步模式提升了用户体验  
-	* 优化浏览器和服务器之间的传输，减少不必要的数据往返，减少带宽占用  
-	* Ajax引擎在客户端运行，承担了一部分本来由服务器端承担的工作，减少了大量用户下的服务器负载  
+* Ajax通过异步模式提升了用户体验  
+* 优化浏览器和服务器之间的传输，减少不必要的数据往返，减少带宽占用  
+* Ajax引擎在客户端运行，承担了一部分本来由服务器端承担的工作，减少了大量用户下的服务器负载  
 ### 3. 缺点  
-	* 不支持浏览器back按钮  
-	* 安全问题。Ajax暴露了与服务器交互的细节  
-	* 对搜索引擎的支持比较弱  
+* 不支持浏览器back按钮  
+* 安全问题。Ajax暴露了与服务器交互的细节  
+* 对搜索引擎的支持比较弱  
 ### 4. 使用基础  
 ##### HTTP请求  
 * ###### http是一种无状态协议；  
@@ -26,13 +26,10 @@
         一般用于信息获取，(有幂等的特点)  
         使用URL传递参数，  
         对所发送信息数量有限制，一般在2000个字符左右；  
-
 		POST：
         一般用于修改服务器上的资源，  
         对所发送的信息数量无限制。
-
         使用POST方式来向服务器POST数据时需要使用setRequestHeader(header,value)方法来添加http头；然后在send里面传递希望发送的数据。  
-        
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");  
 	2.正在请求的URL，  
 	3.请求头，包含一些客户端环境，身份验证信息等  
@@ -51,20 +48,17 @@
     3. 响应体，也就是响应正文  
 		① 创建XMLHttpRequest对象，也就是创建一个异步调用对象  
     		XMLHttpRequest的三个重要属性：  
-    
-            | 属性	| 描述 |  
+            | 属性 | 描述 |  
             | --- | --- |  
-            |  onreadystatechange |	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。 |  
+            | onreadystatechange |	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。 |  
             |readyState	| 存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。|  
-        
             •	0: 请求未初始化  
             •	1: 服务器连接已建立  
             •	2: 请求已接收  
             •	3: 请求处理中  
             •	4: 请求已完成，且响应已就绪  
             status	200: "OK"  
-            404: 未找到页面  
-  
+            404: 未找到页面    
         ② 发送请求  
             open(method,url,async)  
             send(string)  
@@ -72,14 +66,12 @@
                 string仅用于POST请求  
             *当使用get方式时，参数使用？拼接到url地址之后，多个参数之间使用&连接，当使用POST方式时，需在send(string)里string处传入参数  
             *当无法使用缓存文件(更新服务器上的文件或数据库时)；向服务器发送大量数据时；发送包含未知字符的用户输入时；应该使用POST请求。  
-
         ③ 取得响应  
             responseText：获得字符串形式的相应数据  
             responseXML：获得XML形式的响应数据  
             status和statusText：以数字或文本形式返回HTTP状态码(接受了请求并且返回了数据，只是有可能出现诸如找不到文件这种情况。是一种基于成功向服务器发送请求并被处理了的情况之上的状态。)  
         	getALLresponseHeader()：获取所有响应头  
-            getResponseHeader()：查询响应中某个字段的值  
-            
+            getResponseHeader()：查询响应中某个字段的值             
         ④ 获取响应状态  
             readyStates属性：  
 			0：请求还未初始化，open还没调用  
@@ -132,8 +124,8 @@
 ##### JSONP由两部分组成：
 回调函数和数据(回调函数是当页面得到响应时将要做出的操作，数据就会作为参数传入到回调函数中)  
 ##### 直接使用XHR请求不同域上的数据是不被允许的，但是在页面上引入不同域的JS脚本文件缺失可以的。JSONP正是利用这个特性来实现的。这个过程就可以被描述为：  
-    1.通过script标签引入JS文件(script标签的src属性是可以跨域可以携带数据的)*类似的还有href属性也是不存在域的问题的。  
-    2.JS文件载入成功后执行URL参数中指定的函数  
+1.通过script标签引入JS文件(script标签的src属性是可以跨域可以携带数据的)*类似的还有href属性也是不存在域的问题的。  
+2.JS文件载入成功后执行URL参数中指定的函数  
   
 ## jQuery中的Ajax方法  
 `$.ajax()`
