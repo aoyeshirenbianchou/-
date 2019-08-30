@@ -46,33 +46,33 @@ asynchronous javascript and XML, 是几种技术的集合。
     2. 响应头，响应头也和请求头一样包含许多有用信息，例如服务器类型，日期时间，内容类型和长度等  
     
     3. 响应体，也就是响应正文  
-		① 创建XMLHttpRequest对象，也就是创建一个异步调用对象  
-    		XMLHttpRequest的三个重要属性：  
-            | 属性 | 描述 |  
-            | --- | --- |  
-            | onreadystatechange |	存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。 |  
-            |readyState	| 存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。|  
-            •	0: 请求未初始化  
-            •	1: 服务器连接已建立  
-            •	2: 请求已接收  
-            •	3: 请求处理中  
-            •	4: 请求已完成，且响应已就绪  
+	1. 创建XMLHttpRequest对象，也就是创建一个异步调用对象  
+		XMLHttpRequest的三个重要属性：  
+		| 属性 | 描述 |  
+		| --- | --- |  
+		| onreadystatechange | 存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。 |  
+		| readyState | 存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。|  
+            • 0: 请求未初始化  
+            • 1: 服务器连接已建立  
+            • 2: 请求已接收  
+            • 3: 请求处理中  
+            • 4: 请求已完成，且响应已就绪  
             status	200: "OK"  
             404: 未找到页面    
-        ② 发送请求  
+        2. 发送请求  
             open(method,url,async)  
             send(string)  
                 将请求发送到服务器  
                 string仅用于POST请求  
             *当使用get方式时，参数使用？拼接到url地址之后，多个参数之间使用&连接，当使用POST方式时，需在send(string)里string处传入参数  
             *当无法使用缓存文件(更新服务器上的文件或数据库时)；向服务器发送大量数据时；发送包含未知字符的用户输入时；应该使用POST请求。  
-        ③ 取得响应  
+        3. 取得响应  
             responseText：获得字符串形式的相应数据  
             responseXML：获得XML形式的响应数据  
             status和statusText：以数字或文本形式返回HTTP状态码(接受了请求并且返回了数据，只是有可能出现诸如找不到文件这种情况。是一种基于成功向服务器发送请求并被处理了的情况之上的状态。)  
         	getALLresponseHeader()：获取所有响应头  
             getResponseHeader()：查询响应中某个字段的值             
-        ④ 获取响应状态  
+        4. 获取响应状态  
             readyStates属性：  
 			0：请求还未初始化，open还没调用  
 			1：服务器连接已经建立，open已经调用  
