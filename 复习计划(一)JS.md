@@ -7,7 +7,6 @@
 * 闭包  
 * script引入方式  
 * 对象的拷贝  
-* instanceof  
 * 继承  
 * 复用  
 * 数据类型  
@@ -131,6 +130,7 @@ ECMAScript中的数据类型可以分为两种：基本类型和引用类型
 2、 利用递归来实现对对象或数组的深拷贝。思路：对属性中所有引用类型的值进行遍历，直到是基本类型为止，拷贝基本类型值。  
 实例：  
 ```  
+待补充
 ```  
 3、 实现第一层深拷贝，作为整体的深拷贝  
 ①Object.assign(trget,sorce) * Object.assign({},obj) 返回拷贝的新对象  
@@ -172,7 +172,7 @@ Array、RegExp、Date等对象类型的判断都可以用constructor来判断。
 数字 + 对象 –> 优先调用对象的valueOf，然后再toString  
 数字+Boolean/null  –> 数字  
 数字 + undefined  –> NaN  
-*   
+
 Number()强制转换，可用于任何数据类型；  
 parseInt()提取字符串开头的数字。返回整数或NaN。  
 parseFloat()解析字符串返回浮点数。返回整数或NaN。  
@@ -215,11 +215,10 @@ ES Module 是语言层面的模块化方案，由 ES 2015 提出，其规范与 
 •	dom0级(从来没有成为过规范)/dom1/dom2/dom3  
 •	对应的dom0级事件/dom2级事件/dom3级事件（1级并没有事件标准）  
 
-*   
 0级事件（HTML属性）：将函数值赋值给一个事件处理属性，通过给事件处理属性赋值null来解绑，缺点是结构跟事件强耦合。  
-*   
+
 2级事件（DOM元素属性）：定义了addEventListener和removeEventListener两个方法，用来允许给一个事件添加多个处理函数；addEventListener(事件，处理函数，是否在捕获时期执行处理函数)。<table><tr><td bgcolor=#ddd>IE8以下不支持，需要attachEvent和detachEvent实现</td></tr></table>
-*     
+
 3级事件：在二级的基础上添加了更多的事件类型（UI事件，如load、scroll；焦点事件，如blur、focus；鼠标事件，如dbclick、mouseup；滚轮事件，如mousewheel；文本事件，如textInput；键盘事件，如keydown、keypress；合成事件，输入法编辑器输入字符时触发，如compositionstart；变动事件，当底层DOM结构发生变化时触发，如DOMsubtreeModified）
 
 *	##### dom事件流程  
@@ -251,9 +250,11 @@ target获取事件的目标对象；
 * ##### 事件委托  
 将事件监听器添加到父元素上，以此来避免对多个子节点逐一添加事件监听。  
 具体方法：（以点击为例）把子元素需要执行的事件处理绑定到父元素上，当子元素被点击，触发click事件，通过事件冒泡，触发了父元素的click事件，父元素上的事件处理判断点击的元素是否符合需要执行的条件，然后执行。  
+
 • 优势：    
 a/减少事件注册，节省内存。    
 b/减少dom节点更新操作 /* 例如动态新增的li元素不用新绑定事件，删除li时不需要进行元素与处理函数的解绑。    
+
 • 缺点：    
 a/事件委托基于事件冒泡机制，对于onfocus和onblur事件不支持    
 b/层级过多冒泡过程可能会被阻止（建议就近委托）只要冒泡过程中遇到stopPropagation等或者事件不支持冒泡委托就会失败。    
@@ -320,7 +321,6 @@ function handle(){
 //滚动事件（需要防抖的事件）  
 window.addEventListener("scroll",throttle(handle,1000))  
 ```  
-*   
 ##### 2、定时器  
 设置定时器，直到一定时间定时器执行并被清除后再次添加定时器。  
 实例：  
